@@ -1,6 +1,8 @@
 package competitor;
 
+import org.springframework.stereotype.Component;
 
+@Component("poem")
 public class Sonnet implements Poem {
 
     @Override

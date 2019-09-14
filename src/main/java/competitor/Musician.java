@@ -1,6 +1,7 @@
 package competitor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import lombok.AllArgsConstructor;
@@ -11,22 +12,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@Component("reciterJuggler")
-public class ReciterJuggler extends Juggler {
+@Component("jasonPiano")
+public class Musician implements Competitor {
 
-    private Poem poem;
+    @Value("Noche de Paz")
+    private String song;
 
     @Autowired
-    public ReciterJuggler(@Value("15") int balls, Poem poem) {
-        super(balls);
-        this.poem = poem;
-    }
+    @Qualifier("piano")
+    private Instrument instrument;
 
     @Override
-    public void run(){
-        super.run();
-        System.out.println("Mientras recita");
-        poem.recite();
-        System.out.println("Termina recitación...");
+    public void run() throws ExecutionException {
+        System.out.println("Tocando "+ song +":");
+        instrument.play();
     }
 }
