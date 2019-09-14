@@ -2,5 +2,5 @@ package competitor;
 
 public interface Competitor {
 
-    public void run () throws EjecutionException;
+    void run() throws ExecutionException;
 }
